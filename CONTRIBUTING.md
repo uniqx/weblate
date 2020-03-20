@@ -35,6 +35,12 @@ environment by running:
    ./rundev.sh
 ```
 
+If you're using vagrant you can also run:
+
+```
+   vagrant ssh -c 'cd /vagrant && bash rundev.sh'
+```
+
 ## More info
 
 To be found on the website:
