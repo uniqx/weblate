@@ -226,6 +226,24 @@ class MarkdownBaseCheck(TargetCheck):
         self.enable_string = 'md-text'
 
 
+class MarkdownTestCheck(MarkdownBaseCheck):
+    check_id = 'md-tc'
+    name = _('Markdown Test')
+    description = _('This is just a test for figuring out how to write custom tests.')
+
+    def check_single(self, source, target, unit):
+        print('yep yep')
+        print("##################################################################### pew pew markdown")
+        print('source:', source)
+        print('target:', target)
+        print('unit.comment_set:', unit.comment_set)
+        print('unit.flags:', unit.flags)
+        print('unit.source:', unit.source)
+        print('unit.source_info:', unit.source_info)
+        print('unit.note:', unit.note)
+        return False
+
+
 class MarkdownRefLinkCheck(MarkdownBaseCheck):
     check_id = 'md-reflink'
     name = _('Markdown references')
