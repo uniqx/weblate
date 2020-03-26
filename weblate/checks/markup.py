@@ -301,6 +301,38 @@ class MarkdownSyntaxCheck(MarkdownBaseCheck):
         return ret
 
 
+class FDroidMarkdownBaseCheck(TargetCheck):
+    default_disabled = True
+
+    def __init__(self):
+        super().__init__()
+        self.enable_string = 'md-fdroid'
+
+
+class FDroidMarkdownTitleCheck(FDroidMarkdownBaseCheck):
+    """This check is intended for string with source string comment = 'type: Title #' """
+    check_id='md-fdroid-title'
+    name = _('F-Droid markdown title check')
+    description = _('This check tries making sure F-Droid website titles will meet all technical requirements.')
+
+    def check_single(self, source, target, unit):
+        if unit.note != 'type: Title #':
+            return False
+        print('traget:', target)
+        if ':' not in target:
+            return False
+        if target.startswith('"') and target.endswith('"'):
+            return False
+        if target.startswith("'") and target.endswith("'"):
+            return False
+        return True
+
+    def get_fixup(self, unit):
+        target = unit.target
+        replacement = '"' + target.replace('"', '\\"') + '"'
+        return ((target, replacement),)
+
+
 class URLCheck(TargetCheck):
     check_id = 'url'
     name = _('URL')

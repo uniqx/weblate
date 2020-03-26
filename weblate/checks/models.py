@@ -78,6 +78,7 @@ class WeblateChecksConf(AppConf):
         'weblate.checks.markup.MarkdownRefLinkCheck',
         'weblate.checks.markup.MarkdownLinkCheck',
         'weblate.checks.markup.MarkdownSyntaxCheck',
+        'weblate.checks.markup.FDroidMarkdownTitleCheck',
         'weblate.checks.markup.URLCheck',
         'weblate.checks.markup.SafeHTMLCheck',
         'weblate.checks.placeholders.PlaceholderCheck',
